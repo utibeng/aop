@@ -1,5 +1,6 @@
 package com.utibe;
 
+import com.utibe.aspects.AspectsUty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -13,9 +14,10 @@ public class AppConfig {
         return new BusinessClass("Effiong", 21);
     }
 
+
     @Bean
-    public BeforeBusinessClass generateAspectBusinessClass(){
-        return new BeforeBusinessClass();
+    public AspectsUty generateAspectBusinessClassNew(){
+        return new AspectsUty();
     }
 
 }

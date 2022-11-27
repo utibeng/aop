@@ -43,4 +43,8 @@ public class BusinessClass {
         this.age = age;
     }
 
+    public void logToString(){
+        logger.info("Object is {}", this.toString());
+    }
+
 }
