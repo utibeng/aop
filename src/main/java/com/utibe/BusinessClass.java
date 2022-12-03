@@ -3,10 +3,14 @@ package com.utibe;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.utibe.Email;
+
 public class BusinessClass {
 
     private String name;
     private int age;
+
+    private Email email;
 
     private static final Logger logger = LogManager.getLogger();
 
@@ -45,6 +49,11 @@ public class BusinessClass {
 
     public void dummy() {
         logger.info("dummy confuser");
+    }
+
+    public void setEmail(Email email){
+        this.email = email;
+
     }
 
     public void logToString(){

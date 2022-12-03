@@ -1,5 +1,6 @@
 package com.utibe.aspects;
 
+import com.utibe.Email;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -28,8 +29,14 @@ public class AspectsUty {
     @AfterReturning(pointcut="getReturnValuePointcut()",
                     returning="retVal")
     public void doAccessCheck(JoinPoint joinPoint, Object retVal) {
-        logger.info("*******************Value returned from {} was {}*******************",
-                joinPoint.getSignature().getName(), retVal);
+        logger.info("*******************Value returned from {} was {}" +
+                        " and args were {} *******************",
+                joinPoint.getSignature().getName(), retVal, joinPoint.getArgs());
+        BusinessClass businessClass = (BusinessClass) joinPoint.getTarget();
+
+        logger.info("********** Via jointpoint, name is {}*******", businessClass.getName());
+        logger.info("********** Via jointpoint, name is {}*******", businessClass.getName());
+
     }
 
     @Pointcut( "execution(public * com.utibe.BusinessClass.get*(..) )" )
@@ -53,6 +60,19 @@ public class AspectsUty {
     }
     @Pointcut( "execution(public * com.utibe.BusinessClass.logToString(..) )" )
     public void toStringPointcut(){}
+
+    @Around("setEmailPointcut(email)")
+    public Object setEmailAroundAdvice(ProceedingJoinPoint proceedingJoinPoint, Email email) throws Throwable {
+        logger.info("**********Around pointcut start**********");
+        Object retVal = proceedingJoinPoint.proceed();
+        logger.info("**********Around pointcut stop**********");
+
+        logger.info("*****Email is ******* {}", email.toString());
+
+        return retVal;
+    }
+    @Pointcut( "execution(public * com.utibe.BusinessClass.setEmail(..) ) && args(email, ..)" )
+    public void setEmailPointcut(Email email){}
 
 
 

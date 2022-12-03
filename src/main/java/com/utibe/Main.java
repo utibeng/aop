@@ -11,8 +11,6 @@ public class Main {
 
     private static final Logger logger = LogManager.getLogger();
 
-
-
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -23,6 +21,12 @@ public class Main {
         businessClass.getName();
         businessClass.getAge( );
         businessClass.logToString();
+
+        Email email = new Email();
+        email.setDns("yahoo.com");
+        email.setUserID("utibe_ng");
+
+        businessClass.setEmail(email);
 
     }
 }
