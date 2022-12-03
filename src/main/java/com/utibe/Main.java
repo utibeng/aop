@@ -11,16 +11,18 @@ public class Main {
 
     private static final Logger logger = LogManager.getLogger();
 
-    //@Autowired
+
 
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         BusinessClass businessClass = (BusinessClass) context.getBean(BusinessClass.class);
 
-        businessClass.setName( "CCC" );
+        businessClass.setName("CCC");
+        businessClass.setAge(30);
+        businessClass.getName();
+        businessClass.getAge( );
         businessClass.logToString();
-
 
     }
 }

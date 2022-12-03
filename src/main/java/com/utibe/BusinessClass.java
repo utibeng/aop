@@ -43,7 +43,14 @@ public class BusinessClass {
         this.age = age;
     }
 
+    public void dummy() {
+        logger.info("dummy confuser");
+    }
+
     public void logToString(){
+
+        this.dummy();
+
         logger.info("Object is {}", this.toString());
     }
 

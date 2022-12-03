@@ -9,11 +9,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy //Enables @AspectJ
 public class AppConfig {
 
-    @Bean
+    @Bean({"businessClassBean"})
     public BusinessClass generateBusinessClass(){
         return new BusinessClass("Effiong", 21);
     }
-
 
     @Bean
     public AspectsUty generateAspectBusinessClassNew(){
